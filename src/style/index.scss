@@ -1,0 +1,170 @@
+/* Color variables */
+$white: #fff;
+$black: #222;
+
+$grayLighter: #eee;
+$grayLight: #ccc;
+$gray: #777;
+$grayDark: #333;
+
+$red: #b63a3a;
+$yellow: #d8b243;
+$green: #7fa933;
+$blue: #2a7fb2;
+$orange: #dc873c;
+$purple: #5e4e9d;
+
+/* Event types and their colors */
+$types: (
+  canceled: $red,
+  disputed: $yellow,
+  success: $green,
+  new: $blue,
+  non-payment: $orange,
+  renewed: $purple,
+);
+
+/* Spacing variables */
+
+$spacing-xxs: 4px;
+$spacing-xs: 8px;
+$spacing-sm: 12px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+
+/* Font variables */
+
+$font-sm: 12px;
+$font-md: 14px;
+$font-lg: 16px;
+
+/* Animation */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+html * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: $black;
+  color: $grayDark;
+  font-family: "Helvetica Neue"; // If we have access to Inter like we use on Platform, that would be much better!
+}
+
+main {
+  background-image: url("../images/background.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: $grayLighter;
+  border: solid 1px $grayDark;
+  width: 1440px;
+  max-height: 900px;
+  margin: $spacing-lg auto;
+  display: flex;
+  position: relative;
+}
+
+.logo {
+  display: block;
+  position: absolute;
+  max-width: 400px;
+  top: 80px;
+  left: 80px;
+}
+
+.toast {
+  background: $black;
+  box-shadow: 0 2px 16px rgba($black, 50%);
+  padding: $spacing-md $spacing-lg;
+  position: absolute;
+  color: $white;
+  font-size: $font-md;
+  border-radius: 4px;
+  bottom: $spacing-lg;
+  left: 15%;
+  animation-name: fadeInUp;
+  animation-duration: 800ms;
+}
+
+.timeline {
+  margin-left: auto;
+  flex: 0 0 50%;
+  max-height: 100%;
+  overflow: auto;
+
+  &__event {
+    display: flex;
+    position: relative;
+    transition: 500ms;
+  }
+
+  &__timestamp {
+    color: $gray;
+    font-size: $font-sm;
+    padding: $spacing-lg;
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  &__info {
+    border-left: solid 1px $grayLight;
+    padding: $spacing-sm $spacing-lg;
+    position: relative;
+
+    &:before {
+      content: "";
+      display: block;
+      height: 9px;
+      width: 9px;
+      background: $gray;
+      border-radius: 50%;
+      position: absolute;
+      top: 28px;
+      left: -5px;
+    }
+  }
+
+  &__type {
+    border-radius: 4px;
+    color: $white;
+    display: inline-block;
+    padding: $spacing-xs $spacing-xs;
+    font-size: $font-sm;
+    font-weight: 500;
+    margin: $spacing-xs 0;
+
+    &.canceled {
+      background: $red;
+    }
+
+    @each $name, $color in $types {
+      &.#{$name} {
+        background: $color;
+      }
+    }
+  }
+
+  &__name {
+    font-size: $font-lg;
+    font-weight: 600;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__comment {
+    color: $gray;
+    font-size: $font-md;
+    line-height: 1.4;
+  }
+}
