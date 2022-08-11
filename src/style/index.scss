@@ -145,10 +145,6 @@ main {
     font-weight: 500;
     margin: $spacing-xs 0;
 
-    &.canceled {
-      background: $red;
-    }
-
     @each $name, $color in $types {
       &.#{$name} {
         background: $color;

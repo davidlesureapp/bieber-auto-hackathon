@@ -87,7 +87,7 @@ const IndexPage = () => {
       type: "success",
       event: "Payment Successful",
       name: "Hemhem Elegbede",
-      comment: `Another monthly payment of $320.20 has processed! Cherith really loves Belieber Auto, believe that!`,
+      comment: `Another monthly payment of $320.20 has processed! Hemhem really loves Belieber Auto, believe that!`,
     },
   ];
 
