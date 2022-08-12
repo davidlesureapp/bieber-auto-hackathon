@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import "../style/index.scss";
 
@@ -91,14 +91,31 @@ const IndexPage = () => {
     },
   ];
 
+  const [toast, setToast] = useState(false);
+
+  const [totalEvents, setTotalEvents] = useState(3);
+
+  function addEvent() {
+    setTotalEvents(totalEvents + 1);
+    setToast(true);
+    setTimeout(() => {
+      setToast(false);
+    }, 3000);
+  }
+
   return (
     <main>
       <img className="logo" src={logo} />
-      <div className="toast">
-        <strong>New Policy!</strong> If I was your carrier, I’d never let you
-        go.
-      </div>
-      <Timeline data={timeline} />
+      {toast && (
+        <div className="toast">
+          <strong>New Policy!</strong> If I was your carrier, I’d never let you
+          go.
+        </div>
+      )}
+      <Timeline data={timeline.slice(0, totalEvents).reverse()} />
+      <button className="new-event-button" onClick={() => addEvent()}>
+        Test New Event
+      </button>
     </main>
   );
 };

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 
 import Event from "./event";
 
@@ -14,6 +14,7 @@ const Timeline = (props) => {
           name={event.name}
           comment={event.comment}
           new={event.new}
+          key={event.name}
         />
       ))}
     </section>

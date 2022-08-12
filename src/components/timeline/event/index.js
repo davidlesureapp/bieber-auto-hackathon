@@ -1,8 +1,8 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 
 const Event = (props) => {
   return (
-    <div className={`timeline__event ${props.new && "new"}`}>
+    <div key={props.key} className={`timeline__event`}>
       <div className="timeline__timestamp">
         <div className="timeline__time">{props.time}</div>
         <div className="timeline__date">{props.date}</div>
