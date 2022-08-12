@@ -112,7 +112,10 @@ const IndexPage = () => {
           go.
         </div>
       )}
-      <Timeline data={timeline.slice(0, totalEvents).reverse()} />
+      <Timeline
+        data={timeline.slice(0, totalEvents).reverse()}
+        key={totalEvents}
+      />
       <button className="new-event-button" onClick={() => addEvent()}>
         Test New Event
       </button>
